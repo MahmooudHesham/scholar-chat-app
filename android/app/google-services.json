@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "791953660680",
+    "project_id": "scholar-chat-app-c85bc",
+    "storage_bucket": "scholar-chat-app-c85bc.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:791953660680:android:9f80c7e4109a43d98baabd",
+        "android_client_info": {
+          "package_name": "com.example.scholar_chat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVwPUlqZ9GrKGfw03M14QCXfrFEriZ42o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
