@@ -2,10 +2,29 @@ import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:meta/meta.dart';
 
-part 'signup_state.dart';
+part 'auth_state.dart';
 
-class SignupCubit extends Cubit<SignupState> {
-  SignupCubit() : super(SignupInitial());
+class AuthCubit extends Cubit<AuthState> {
+  AuthCubit() : super(AuthInitial());
+
+  Future<void> signInUser({
+    required String email,
+    required String password,
+  }) async {
+    emit(LoginLoading());
+
+    try {
+      UserCredential userCredential = await FirebaseAuth.instance
+          .signInWithEmailAndPassword(email: email, password: password);
+      emit(LoginSuccess());
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'invalid-credential') {
+        emit(LoginFailure(errMsg: e.code));
+      }
+    } on Exception catch (e) {
+      emit(LoginFailure(errMsg: 'Something went wrong'));
+    }
+  }
 
   Future<void> signUpUser({
     required String email,

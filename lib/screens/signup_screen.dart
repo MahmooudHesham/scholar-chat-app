@@ -5,7 +5,7 @@ import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:scholar_chat/constants.dart';
 import 'package:scholar_chat/helper/show_snackBar.dart';
 import 'package:scholar_chat/screens/chat_screen.dart';
-import 'package:scholar_chat/screens/cubits/signup_cubit/signup_cubit.dart';
+import 'package:scholar_chat/screens/cubits/auth_cubit/auth_cubit.dart';
 import 'package:scholar_chat/widgets/custom_button.dart';
 import 'package:scholar_chat/widgets/custom_textfield.dart';
 
@@ -22,7 +22,7 @@ class SignupScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<SignupCubit, SignupState>(
+    return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
         if (state is SignupLoading) {
           isLoading = true;
@@ -100,7 +100,7 @@ class SignupScreen extends StatelessWidget {
                       text: 'Sign Up',
                       onTap: () async {
                         if (formKey.currentState!.validate()) {
-                          BlocProvider.of<SignupCubit>(
+                          BlocProvider.of<AuthCubit>(
                             context,
                           ).signUpUser(email: email!, password: password!);
                         } else {}
